@@ -1,0 +1,39 @@
+.featured-pair {
+  display: contents;
+}
+
+.featured-card {
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16 / 5;
+}
+
+.featured-card--text {
+  background: #17175b;
+  color: #fff;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-card--text h3 {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.featured-card--text p {
+  font-size: 11px;
+  opacity: 0.95;
+  line-height: 1.55;
+  margin-bottom: 12px;
+  max-width: 420px;
+}
+
+.featured-card--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

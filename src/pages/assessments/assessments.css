@@ -1,0 +1,180 @@
+.assessment-page{
+  background: #ffffff;
+  padding: 28px 60px 40px 60px;
+}
+
+.assessment-grid{
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.metrics-card,
+.assistant-card{
+  border: 2px solid #0b0b3b;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.metrics-card{
+  padding: 14px 14px 16px 14px;
+}
+
+.metrics-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.metrics-top h2{
+  font-size: 12px;
+  font-weight: 900;
+  color: #111;
+}
+
+.unit-tabs{
+  display: flex;
+  gap: 6px;
+}
+
+.unit-tab{
+  border: 1px solid #0b0b3b;
+  background: #ffffff;
+  color: #0b0b3b;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.unit-tab.active{
+  background: #0b0b3b;
+  color: #ffffff;
+}
+
+.metrics-form{
+  display: grid;
+  gap: 10px;
+}
+
+.metrics-form label{
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 10px;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #111;
+}
+
+.metrics-form input{
+  width: 100%;
+  border: 1px solid #bfc3cf;
+  border-radius: 3px;
+  padding: 6px 8px;
+  font-size: 10px;
+  outline: none;
+  background: #ffffff;
+}
+
+.metrics-form input:focus{
+  border-color: #0b0b3b;
+}
+
+.assistant-card{
+  padding: 14px 14px 16px 14px;
+}
+
+.assistant-card h2{
+  font-size: 12px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.assistant-card p{
+  font-size: 10px;
+  color: #555;
+  line-height: 1.65;
+  max-width: 340px;
+}
+
+.assistant-card .hl{
+  background: #dbe7ff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 800;
+  color: #0b0b3b;
+}
+
+/* ===== STEPS SECTION ===== */
+.assessment-steps {
+  background: #f3f4f7;
+  padding: 60px 0;
+}
+
+/* title */
+.steps-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+/* grid layout */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* individual cards */
+.step-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+
+  /* soft shadow like screenshot */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* number circle */
+.step-number {
+  width: 36px;
+  height: 36px;
+  background: #2c4e73;
+  color: white;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 auto 15px auto;
+}
+
+/* title */
+.step-card h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* description */
+.step-card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  max-width: 260px;
+  margin: 0 auto;
+}

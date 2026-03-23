@@ -1,0 +1,94 @@
+.focus-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+}
+
+.focus-card img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.focus-card--big {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+}
+
+.focus-card--big img {
+  height: 100%;
+}
+
+.focus-card__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #17175b;
+  color: #fff;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.focus-card__bar h3 {
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.focus-card__bar p {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.focus-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.workout-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 0;
+  opacity: 0.9;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.mini-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ece4e4;
+}
+
+.mini-card img {
+  width: 100%;
+  height: 85px;
+  object-fit: cover;
+  display: block;
+}
+
+.mini-card__text {
+  padding: 8px 10px;
+}
+
+.mini-card__text h4 {
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.mini-card__text p {
+  font-size: 10px;
+  color: #666;
+}
+
+.mini-card__text .featured-actions {
+  margin-top: 6px;
+}
