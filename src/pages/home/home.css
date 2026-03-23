@@ -279,3 +279,92 @@ body {
     font-size: 13px;
     color: gray;
 }
+
+@media (max-width: 900px) {
+
+  /* page wrap */
+  .page-wrap {
+    width: 90vw;
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  /* EXPLORE CARDS */
+  .explore {
+    padding: 40px 20px;
+  }
+
+  .explore .card-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  /* STAY UPDATED */
+  .overlay {
+    padding: 50px 20px;
+  }
+
+  .updated-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .updated-left {
+    max-width: 100%;
+  }
+
+  .newsletter-card {
+    width: 100%;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  /* BUTTONS */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .secondary-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 50px 20px;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+  }
+
+  .testimonial-card {
+    width: 100%;
+  }
+}
