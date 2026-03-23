@@ -1,0 +1,370 @@
+html, body { overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #6b6868;
+    color: #333;
+    line-height: 1.6;
+}
+
+.page-wrap{
+  width: min(80vw, 1200px);
+  margin: 0 auto;
+}
+
+.hero {
+    background: linear-gradient(rgba(23, 48, 74, 0.8), rgba(4, 34, 66, 0.8)), url("../../assets/images/Workout3.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* key */
+    align-items: center;
+    
+}
+
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.primary-btn {
+    background: white;
+    color: #0d1b2a;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
+/* EXPLORE SECTION */
+.explore {
+    padding: 60px;
+    background: white;
+}
+
+.explore .card-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.explore a.card{
+  display: block;          
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+}
+
+
+.explore .card img{
+  width: 100%;
+  height: 160px;           
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.explore h2 {
+    margin-bottom: 10px;
+}
+
+.section-intro {
+    margin-bottom: 40px;
+    max-width: 700px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: #e0e1dd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.card img {
+    width: auto;
+    height: auto;
+    background: #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+
+/* STAY UPDATED SECTION */
+.stay-updated {
+    background: url("../../assets/images/Workout1.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    background: rgba(33, 68, 106, 0.85);
+    padding: 80px 60px;
+}
+
+.updated-content {
+  color: white;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* key */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.updated-content h2{
+  margin-bottom: 20px;
+}
+
+.updated-content h4{
+  margin-top: 18px;
+  margin-bottom: 4px;
+}
+
+.updated-content p{
+  margin-bottom: 12px;
+}
+
+.updated-left{
+  max-width: 560px; /* keeps text readable */
+}
+
+.button-group {
+    margin-top: 25px;
+}
+
+.secondary-btn {
+    background: black;
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.secondary-btn.light {
+    background: white;
+    color: black;
+}
+
+/* right card */
+.newsletter-card{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 22px;
+  backdrop-filter: blur(4px);
+  align-self: center; /* keeps card from stretching tall */
+}
+
+.newsletter-card h4{
+  margin-bottom: 8px;
+}
+
+.newsletter-form{
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.newsletter-form input{
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.newsletter-form button{
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #222;
+}
+
+/*testimonial*/
+
+.testimonials {
+    background-color: #0b0b3b; /* dark navy */
+    padding: 70px 80px;
+    color: white;
+}
+
+.testimonials h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: white;
+    color: #222;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.quote {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.person img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.description {
+    font-size: 13px;
+    color: gray;
+}
+
+@media (max-width: 900px) {
+
+  /* page wrap */
+  .page-wrap {
+    width: 90vw;
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  /* EXPLORE CARDS */
+  .explore {
+    padding: 40px 20px;
+  }
+
+  .explore .card-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  /* STAY UPDATED */
+  .overlay {
+    padding: 50px 20px;
+  }
+
+  .updated-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .updated-left {
+    max-width: 100%;
+  }
+
+  .newsletter-card {
+    width: 100%;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  /* BUTTONS */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .secondary-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 50px 20px;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+  }
+
+  .testimonial-card {
+    width: 100%;
+  }
+}
