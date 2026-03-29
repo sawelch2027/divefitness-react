@@ -1,12 +1,12 @@
 import "./about.css";
 import founder from "../../assets/images/Beach Vanna.jpg";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 function About() {
   return (
     <main className="about-page">
       <div className="page-wrap">
-
-        {/* HERO */}
         <section className="about-hero">
           <div className="about-hero-overlay">
             <div className="page-wrap">
@@ -22,7 +22,6 @@ function About() {
           </div>
         </section>
 
-        {/* TOP SECTION */}
         <section className="about-top">
           <div className="about-top__left">
             <p className="about-founder">Founder: Savanna Welch</p>
@@ -57,39 +56,19 @@ function About() {
           </div>
         </section>
 
-        {/* CONTACT SECTION */}
         <section className="contact-section">
           <div className="contact-header">
-            <h2>Get In Touch</h2>
-            <p>
-              Have a question about workouts, nutrition, or assessments? Send a
-              message below.
-            </p>
+            <SectionTitle
+            title="Get In Touch"
+            subtitle="Let us know how we're doing!"
+            center={true}
+          />
           </div>
 
           <div className="contact-container">
-            <form className="contact-form">
-              <label>Name</label>
-              <input type="text" required />
-
-              <label>Email</label>
-              <input type="email" required />
-
-              <label>Subject</label>
-              <input type="text" required />
-
-              <label>Message</label>
-              <textarea rows="6" required></textarea>
-
-              <button type="submit" className="primary-btn">
-                Send Message
-              </button>
-
-              <p className="form-message"></p>
-            </form>
+            <ContactForm />
           </div>
         </section>
-
       </div>
     </main>
   );

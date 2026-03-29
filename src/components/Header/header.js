@@ -1,37 +1,35 @@
+import { useState } from "react";
 import "./Header.css";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
+import NavMenu from "../NavMenu/NavMenu";
 
 function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleMenu() {
+    setIsOpen(!isOpen);
+  }
+
+  function closeMenu() {
+    setIsOpen(false);
+  }
+
   return (
     <header>
       <div className="header-container">
-
-        {/* Logo */}
         <div className="logo">
-          <Link to="/">
+          <Link to="/" onClick={closeMenu}>
             <img src={logo} alt="logo" />
           </Link>
           <h1>DiveFitness</h1>
         </div>
 
-        {/* Menu label (no toggle yet) */}
-        <div className="menu-toggle">
-          <h2>Menu ▼</h2>
-        </div>
+        <button className="menu-toggle" onClick={toggleMenu}>
+          Menu ▼
+        </button>
 
-        {/* Navigation */}
-        <nav id="nav-menu">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/nutrition">Nutrition</Link></li>
-            <li><Link to="/workouts">Workouts</Link></li>
-            <li><Link to="/assessments">Assessment</Link></li>
-            <li><Link to="/" className="login-btn">Log In</Link></li>
-          </ul>
-        </nav>
-
+        <NavMenu isOpen={isOpen} closeMenu={closeMenu} />
       </div>
     </header>
   );

@@ -1,5 +1,9 @@
 import "./home.css";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import TestimonialCard from "../../components/TestimonialCard/TestimonialCard";
+import NewsletterForm from "../../components/NewsLetterForm/NewsLetterForm";
+
 import workout2 from "../../assets/images/Workout 2.jpg";
 import nutrition1 from "../../assets/images/nutrition1.jpg";
 import weightloss1 from "../../assets/images/weightloss1.jpg";
@@ -30,16 +34,14 @@ function Home() {
             Start Your Journey Now →
           </Link>
         </div>
-
       </section>
 
       <section className="explore">
-        <h2>Explore DiveFitness</h2>
-        <p className="section-intro">
-          Welcome to the Explore hub of DiveFitness, where we break down the
-          science of strength and the discipline of elite performance into
-          actionable steps for your daily life.
-        </p>
+        <SectionTitle
+          title="Explore DiveFitness"
+          subtitle="Welcome to the Explore hub of DiveFitness, where we break down the science of strength and the discipline of elite performance into actionable steps for your daily life."
+          center={true}
+        />
 
         <div className="card-grid">
           <Link to="/workouts" className="card">
@@ -127,10 +129,7 @@ function Home() {
                 <h4>Join the Newsletter</h4>
                 <p>Weekly training & nutrition insights.</p>
 
-                <div className="newsletter-form">
-                  <input type="email" placeholder="Email address" />
-                  <button>Subscribe</button>
-                </div>
+                <NewsletterForm />
 
                 <br />
 
@@ -153,53 +152,26 @@ function Home() {
         <h2>What Our Community is Saying</h2>
 
         <div className="testimonial-container">
-          <div className="testimonial-card">
-            <p className="quote">
-              “Dive Fitness helped me find the structure I’ve been missing since
-              my high school sports days; the ROTC-inspired approach to workouts
-              really keeps me accountable.”
-            </p>
+          <TestimonialCard
+            quote="Dive Fitness helped me find the structure I’ve been missing since my high school sports days; the ROTC-inspired approach to workouts really keeps me accountable."
+            image={person1}
+            name="Name"
+            description="Description"
+          />
 
-            <div className="person">
-              <img src={person1} alt="Name" />
-              <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
-              </div>
-            </div>
-          </div>
+          <TestimonialCard
+            quote="I love how clear the nutrition guides are; I finally understand how to manage my calories without feeling overwhelmed by complicated diet jargon."
+            image={person2}
+            name="Name"
+            description="Description"
+          />
 
-          <div className="testimonial-card">
-            <p className="quote">
-              “I love how clear the nutrition guides are; I finally understand
-              how to manage my calories without feeling overwhelmed by
-              complicated diet jargon.”
-            </p>
-
-            <div className="person">
-              <img src={person2} alt="Name" />
-              <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="testimonial-card">
-            <p className="quote">
-              “The full-body guides are my go-to for my busy schedule—I’m seeing
-              more strength gains in three days a week than I ever did training
-              every day on my own.”
-            </p>
-
-            <div className="person">
-              <img src={person3} alt="Name" />
-              <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
-              </div>
-            </div>
-          </div>
+          <TestimonialCard
+            quote="The full-body guides are my go-to for my busy schedule—I’m seeing more strength gains in three days a week than I ever did training every day on my own."
+            image={person3}
+            name="Name"
+            description="Description"
+          />
         </div>
       </section>
     </div>

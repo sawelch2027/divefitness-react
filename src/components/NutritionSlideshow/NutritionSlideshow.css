@@ -1,0 +1,74 @@
+.nutrition-slideshow {
+  min-height: 85vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+.nutrition-slideshow-overlay {
+  min-height: 85vh;
+  background: rgba(20, 58, 90, 0.68);
+  display: flex;
+  align-items: center;
+}
+
+.nutrition-slideshow-content {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nutrition-slideshow-copy {
+  max-width: 700px;
+}
+
+.nutrition-slideshow-copy h2 {
+  font-size: 3.4rem;
+  margin-bottom: 20px;
+}
+
+.nutrition-slideshow-copy p {
+  font-size: 1.18rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 620px;
+}
+
+.slide-dots {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+
+@media (max-width: 900px) {
+  .nutrition-slideshow,
+  .nutrition-slideshow-overlay {
+    min-height: 70vh;
+  }
+
+  .nutrition-slideshow-copy h2 {
+    font-size: 2.3rem;
+  }
+
+  .nutrition-slideshow-copy p {
+    font-size: 1rem;
+  }
+}

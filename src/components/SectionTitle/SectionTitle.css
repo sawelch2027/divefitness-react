@@ -1,0 +1,24 @@
+.section-title {
+  margin-bottom: 32px;
+}
+
+.section-title h2 {
+  font-size: 2.4rem;
+  color: #092236;
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: #000000;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.section-title.center {
+  text-align: center;
+}
+
+.section-title.center p {
+  margin: 0 auto;
+}

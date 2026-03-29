@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./assessments.css";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 
 function Assessment() {
@@ -12,7 +13,11 @@ function Assessment() {
       {/* STEPS */}
       <section className="assessment-steps">
         <div className="page-wrap">
-          <h2 className="steps-title">How Your Assessment Works</h2>
+          <SectionTitle
+            title="How Your Assessment Works"
+            subtitle="Our algorithim that will take you from wanting to having all of your nutrition needs."
+            center={true}
+          />
 
           <div className="steps-grid">
             <div className="step-card">

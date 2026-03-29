@@ -1,6 +1,8 @@
 import "./nutrition.css";
 import { Link } from "react-router-dom";
 import NutritionCard from "../../components/NutritionCard/nutritioncard";
+import NutritionSlideshow from "../../components/NutritionSlideshow/NutritionSlideshow";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import food from "../../data/food";
 
 import weightloss1 from "../../assets/images/weightloss1.jpg";
@@ -12,65 +14,14 @@ function Nutrition() {
   return (
     <main className="nutrition-page">
       <div className="page-wrap">
-        <section className="nutrition-hero">
-          <div className="nutrition-overlay">
-            <div className="nutrition-top">
-              <div className="nutrition-copy">
-                <h2>Fuel Your Ambition</h2>
-                <p>
-                  Proper nutrition is one of your results’ secret weapons. Our
-                  meal plans balance all your macros: high protein, efficient
-                  fats, and carbs designed to support pacing and results.
-                </p>
-              </div>
-
-              <Link to="/assessments" className="primary-btn">
-                Get my Assessment →
-              </Link>
-            </div>
-
-            <div className="macro-cards">
-              <div className="macro-card">
-                <h4>Protein</h4>
-                <p>Builds/repairs muscle, keeps you full, supports recovery.</p>
-                <ul>
-                  <li>Target: 20–40g/meal</li>
-                  <li>Chicken, fish, eggs, Greek yogurt</li>
-                </ul>
-              </div>
-
-              <div className="macro-card">
-                <h4>Carbs</h4>
-                <p>Your training fuel—supports performance and energy.</p>
-                <ul>
-                  <li>Prioritize: whole grains, fruit</li>
-                  <li>Time more carbs around workouts</li>
-                </ul>
-              </div>
-
-              <div className="macro-card">
-                <h4>Fats</h4>
-                <p>Hormone support + long-lasting energy + absorption.</p>
-                <ul>
-                  <li>Focus: olive oil, nuts, avocado</li>
-                  <li>Balance portions (calorie dense)</li>
-                </ul>
-              </div>
-
-              <div className="macro-card">
-                <h4>Micros + Fiber</h4>
-                <p>Gut health, recovery, immunity, and steady energy.</p>
-                <ul>
-                  <li>Veggies at 2+ meals/day</li>
-                  <li>Fiber goal: 25–35g/day</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        <NutritionSlideshow />
 
         <section className="nutri-section">
-          <h2 className="nutri-title">Choose Your Goal</h2>
+          <SectionTitle
+            title="Choose Your Goal"
+            subtitle="Select a nutrition approach that aligns with your fitness goals and lifestyle."
+            center={true}
+          />
 
           <div className="goal-grid">
             <article className="goal-card">
@@ -129,7 +80,12 @@ function Nutrition() {
         </section>
 
         <section className="nutri-section">
-          <h2 className="nutri-title">Example Daily Menu</h2>
+          <SectionTitle
+            title="Example Daily Menu"
+            subtitle="A sample breakdown of meals designed to support performance, recovery, and consistency."
+            center={true}
+          />
+
           <div className="menu-grid">
             {food.map((item, index) => (
               <NutritionCard

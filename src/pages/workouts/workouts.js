@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import FeaturedCard from "../../components/FeatureCard/featurecard";
 import WorkoutCard from "../../components/WorkoutCard/Workoutcard";
+import WorkoutVideo from "../../components/WorkoutVideo/WorkoutVideo";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 import strength from "../../assets/images/strength.jpg";
 import hiit from "../../assets/images/HIIT.jpg";
@@ -32,7 +34,11 @@ function Workouts() {
 
         <section className="workout-section">
           <div className="workout-wrap">
-            <h2 className="workout-title">Featured Plans</h2>
+            <SectionTitle
+              title="Featured Plans"
+              subtitle="Structured programs designed to maximize results with minimal wasted effort."
+              center={true}
+            />
 
             <div className="featured-grid">
               <FeaturedCard
@@ -62,12 +68,11 @@ function Workouts() {
 
         <section className="workout-section">
           <div className="workout-wrap">
-            <h2 className="workout-title">Focus on your Body</h2>
-            <p className="workout-subtext">
-              Recovery is just as important as the workout itself. Explore our
-              library of guided stretching and yoga routines designed to improve
-              flexibility, reduce soreness, and prevent injury.
-            </p>
+            <SectionTitle
+              title="Focus on Your Body"
+              subtitle="Recovery is just as important as the workout itself. Explore guided mobility, stretching, and targeted training routines."
+              center={true}
+            />
 
             <div className="focus-grid">
               <WorkoutCard
@@ -141,30 +146,7 @@ function Workouts() {
           </div>
         </section>
 
-        <section className="video-section">
-          <div className="video-container">
-            <div className="video-text">
-              <p className="video-eyebrow">Guided Workout</p>
-              <h2>Train With Us</h2>
-              <p>
-                Follow along with one of our favorite guided workout videos and
-                stay consistent with a routine that keeps you moving.
-              </p>
-              <Link to="/assessments" className="video-btn">
-                Start Your Plan →
-              </Link>
-            </div>
-
-            <div className="video-frame">
-              <iframe
-                src="https://www.youtube.com/embed/ml6cT4AZdqI"
-                title="Workout Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </section>
+        <WorkoutVideo />
 
         <section className="workout-section workout-section--tight">
           <div className="workout-wrap">
