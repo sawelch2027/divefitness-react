@@ -1,32 +1,48 @@
-//json_package^
+require("dotenv").config();
+require("node:dns").setServers(["1.1.1.1", "8.8.8.8"]);
+
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require("multer");
+
 const app = express();
-app.use(express.static("public"));
+app.use(cors());
 app.use(express.json());
-app.use(cors.apply());
 
-const storage = multer.diskStorage({
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Could not connect to MongoDB:", err));
 
+const messageSchema = new mongoose.Schema({
+  name: String,
 });
 
-const upload = multer({ storage: storage });
+//const to pull images//
 
-let houses = [
+const Message = mongoose.model("Message", messageSchema);
 
-]
-
-app.get("/api/houses", (req,res)=>{
-  res.send(houses);
+app.get("/api/messages", async (req, res) => {
+  try {
+    const messages = await Message.find();
+    res.json(messages);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to get messages" });
+  }
 });
 
-app.get("/api/houses/:id", (req,res)=>{
-  const house=houses.find((h)=>h._id===parseInt(req.params.id));
-  res.send(house);
+app.post("/api/messages", async (req, res) => {
+  try {
+    const message = new Message({
+      name: req.body.name,
+    });
+
+    const result = await message.save();
+    res.status(201).json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to save message" });
+  }
 });
 
-//listen for incoming requests
-app.listen(3001, ()=>{
-  console.log("Server is up and running");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
