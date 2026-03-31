@@ -18,6 +18,8 @@ const messageSchema = new mongoose.Schema({
   name: String,
 });
 
+//const to pull images//
+
 const Message = mongoose.model("Message", messageSchema);
 
 app.get("/api/messages", async (req, res) => {
