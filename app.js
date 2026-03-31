@@ -1,3 +1,4 @@
+//json_package^
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
@@ -18,6 +19,11 @@ let houses = [
 
 app.get("/api/houses", (req,res)=>{
   res.send(houses);
+});
+
+app.get("/api/houses/:id", (req,res)=>{
+  const house=houses.find((h)=>h._id===parseInt(req.params.id));
+  res.send(house);
 });
 
 //listen for incoming requests
