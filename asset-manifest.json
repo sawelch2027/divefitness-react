@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/divefitness-react/static/css/main.fe4d1456.css",
+    "main.js": "/divefitness-react/static/js/main.acf8b5e1.js",
+    "static/media/Nutrition2.jpg": "/divefitness-react/static/media/Nutrition2.3cab3cfa30c8c2ce809c.jpg",
+    "static/media/nutrition1.jpg": "/divefitness-react/static/media/nutrition1.125f250da1a7f3dfd745.jpg",
+    "static/media/Stretch.jpg": "/divefitness-react/static/media/Stretch.e3260ca190d5cfa4a719.jpg",
+    "static/media/strength.jpg": "/divefitness-react/static/media/strength.c84c89067e9162b3d580.jpg",
+    "static/media/quinoa bowl.jpg": "/divefitness-react/static/media/quinoa bowl.074fe2e6b7355547e7b7.jpg",
+    "static/media/Nutrition3.jpg": "/divefitness-react/static/media/Nutrition3.eef490a6c5d5fc2534e5.jpg",
+    "static/media/HIIT.jpg": "/divefitness-react/static/media/HIIT.c42617fe1aefc4ffafba.jpg",
+    "static/media/protien shake.jpg": "/divefitness-react/static/media/protien shake.a066cd830988d7caf1f8.jpg",
+    "static/media/greek yogurt.jpg": "/divefitness-react/static/media/greek yogurt.3bd66ef8d15cdee3a27d.jpg",
+    "static/media/Muscle.jpg": "/divefitness-react/static/media/Muscle.64b662025889379377ba.jpg",
+    "static/media/Beach Vanna.jpg": "/divefitness-react/static/media/Beach Vanna.8ca904d5779aebb07784.jpg",
+    "static/media/weightloss1.jpg": "/divefitness-react/static/media/weightloss1.1a71086c61f06c55be89.jpg",
+    "static/media/person1.jpg": "/divefitness-react/static/media/person1.411272f98b3877bf21e2.jpg",
+    "static/media/salmon.jpg": "/divefitness-react/static/media/salmon.1bdd77444791b4ec2896.jpg",
+    "static/media/Workout1.jpg": "/divefitness-react/static/media/Workout1.b756801a7ee79feb9b05.jpg",
+    "index.html": "/divefitness-react/index.html",
+    "main.fe4d1456.css.map": "/divefitness-react/static/css/main.fe4d1456.css.map",
+    "main.acf8b5e1.js.map": "/divefitness-react/static/js/main.acf8b5e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe4d1456.css",
+    "static/js/main.acf8b5e1.js"
+  ]
+}
