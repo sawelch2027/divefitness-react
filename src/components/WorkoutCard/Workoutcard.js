@@ -1,82 +1,24 @@
-import "./Workoutcard.css";
-import { Link } from "react-router-dom";
+import "./WorkoutCard.css";
 
-function WorkoutCard({
-  variant = "mini",
-  image,
-  imageAlt,
-  title,
-  description,
-  meta,
-  buttonText,
-  buttonLink,
-  secondaryText
-}) {
-  if (variant === "big") {
-    return (
-      <div className="focus-card focus-card--big">
-        <img src={image} alt={imageAlt} />
-        <div className="focus-card__bar">
-          <div>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            {meta && <div className="workout-meta">{meta}</div>}
-          </div>
-
-          <div className="focus-actions">
-            <Link className="btn-dark" to={buttonLink}>
-              {buttonText}
-            </Link>
-            {secondaryText && (
-              <a className="btn-light" href="#!">
-                {secondaryText}
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "stack") {
-    return (
-      <div className="focus-card focus-card--stack">
-        <img src={image} alt={imageAlt} />
-        <div className="focus-card__stacktext">
-          <div>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            {meta && <div className="workout-meta">{meta}</div>}
-          </div>
-
-          <div className="featured-actions">
-            <Link className="btn-dark" to={buttonLink}>
-              {buttonText}
-            </Link>
-            {secondaryText && (
-              <a className="btn-light" href="#!">
-                {secondaryText}
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+function WorkoutCard({ workout, onClick, serverUrl }) {
   return (
-    <div className="mini-card">
-      <img src={image} alt={imageAlt} />
-      <div className="mini-card__text">
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <div className="featured-actions">
-          <Link className="btn-dark" to={buttonLink}>
-            {buttonText}
-          </Link>
+    <article className="workout-card" onClick={() => onClick(workout)}>
+      <img
+        src={`${serverUrl}${workout.image}`}
+        alt={workout.title}
+        className="workout-card-image"
+      />
+      <div className="workout-card-body">
+        <p className="workout-card-category">{workout.category}</p>
+        <h3>{workout.title}</h3>
+        <p className="workout-card-description">{workout.shortDescription}</p>
+
+        <div className="workout-card-meta">
+          <span>{workout.duration}</span>
+          <span>{workout.level}</span>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 

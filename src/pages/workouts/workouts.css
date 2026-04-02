@@ -285,6 +285,32 @@
   line-height: 1.55;
 }
 
+.server-workouts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.workouts-status {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #52667e;
+  margin-top: 20px;
+}
+
+@media (max-width: 950px) {
+  .server-workouts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .server-workouts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .workout-wrap {
     padding: 0 20px;

@@ -1,4 +1,4 @@
-.workout-card {
+.server-workout-card {
   background: #ffffff;
   border-radius: 22px;
   overflow: hidden;
@@ -7,23 +7,23 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.workout-card:hover {
+.server-workout-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(18, 37, 63, 0.16);
 }
 
-.workout-card-image {
+.server-workout-card-image {
   width: 100%;
   height: 240px;
   object-fit: cover;
   display: block;
 }
 
-.workout-card-body {
+.server-workout-card-body {
   padding: 22px;
 }
 
-.workout-card-category {
+.server-workout-card-category {
   margin: 0 0 10px 0;
   color: #3f628a;
   font-size: 0.95rem;
@@ -32,26 +32,26 @@
   letter-spacing: 0.05em;
 }
 
-.workout-card h3 {
+.server-workout-card h3 {
   margin: 0 0 12px 0;
   font-size: 1.45rem;
   line-height: 1.15;
   color: #102033;
 }
 
-.workout-card-description {
+.server-workout-card-description {
   margin: 0 0 18px 0;
   color: #52667e;
   line-height: 1.65;
 }
 
-.workout-card-meta {
+.server-workout-card-meta {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-.workout-card-meta span {
+.server-workout-card-meta span {
   background: #e9f1f7;
   color: #163a5a;
   padding: 8px 12px;

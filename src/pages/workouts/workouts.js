@@ -1,19 +1,36 @@
 import "./workouts.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import FeaturedCard from "../../components/FeatureCard/featurecard";
-import WorkoutCard from "../../components/WorkoutCard/Workoutcard";
 import WorkoutVideo from "../../components/WorkoutVideo/WorkoutVideo";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import ServerWorkoutCard from "../../components/ServerWorkoutCard/ServerWorkoutCard";
+import WorkoutModal from "../../components/WorkoutModal/WorkoutModal";
 
 import strength from "../../assets/images/strength.jpg";
 import hiit from "../../assets/images/HIIT.jpg";
-import stretch from "../../assets/images/Stretch.jpg";
-import workout1 from "../../assets/images/Workout1.jpg";
-import workout2 from "../../assets/images/Workout 2.jpg";
-import workout3 from "../../assets/images/Workout3.jpg";
 
 function Workouts() {
+  const SERVER_URL = "https://divefitness-server.onrender.com";
+
+  const [workouts, setWorkouts] = useState([]);
+  const [selectedWorkout, setSelectedWorkout] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${SERVER_URL}/api/workouts`)
+      .then((response) => response.json())
+      .then((data) => {
+        setWorkouts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error loading workouts:", error);
+        setLoading(false);
+      });
+  }, [SERVER_URL]);
+
   return (
     <main className="workouts-page">
       <div className="page-wrap">
@@ -74,75 +91,20 @@ function Workouts() {
               center={true}
             />
 
-            <div className="focus-grid">
-              <WorkoutCard
-                variant="big"
-                image={stretch}
-                imageAlt="Morning Mobility"
-                title="Morning Mobility"
-                description="Gentle stretching to wake up your body."
-                meta="10 min"
-                buttonText="Begin →"
-                buttonLink="/assessments"
-                secondaryText="Bookmark"
-              />
-
-              <div className="focus-right">
-                <WorkoutCard
-                  variant="stack"
-                  image={workout2}
-                  imageAlt="Upper Body Burn"
-                  title="Upper Body Burn"
-                  description="Target your arms, chest, and shoulders."
-                  meta="20 min"
-                  buttonText="Begin →"
-                  buttonLink="/assessments"
-                  secondaryText="Bookmark"
-                />
-
-                <div className="mini-grid">
-                  <WorkoutCard
-                    variant="mini"
-                    image={workout1}
-                    imageAlt="Core Crusher"
-                    title="Core Crusher"
-                    description="Quick ab-focused finisher."
-                    buttonText="Begin →"
-                    buttonLink="/assessments"
+            {loading ? (
+              <p className="workouts-status">Loading workouts...</p>
+            ) : (
+              <div className="server-workouts-grid">
+                {workouts.map((workout) => (
+                  <ServerWorkoutCard
+                    key={workout.id}
+                    workout={workout}
+                    serverUrl={SERVER_URL}
+                    onClick={setSelectedWorkout}
                   />
-
-                  <WorkoutCard
-                    variant="mini"
-                    image={workout3}
-                    imageAlt="Leg Liquifier"
-                    title="Leg Liquifier"
-                    description="Lower-body strength and endurance."
-                    buttonText="Begin →"
-                    buttonLink="/assessments"
-                  />
-
-                  <WorkoutCard
-                    variant="mini"
-                    image={strength}
-                    imageAlt="Strength Builder"
-                    title="Strength Builder"
-                    description="Free-weight basics done right."
-                    buttonText="Begin →"
-                    buttonLink="/assessments"
-                  />
-
-                  <WorkoutCard
-                    variant="mini"
-                    image={hiit}
-                    imageAlt="Quick HIIT"
-                    title="Quick HIIT"
-                    description="Fast-paced cardio circuit."
-                    buttonText="Begin →"
-                    buttonLink="/assessments"
-                  />
-                </div>
+                ))}
               </div>
-            </div>
+            )}
           </div>
         </section>
 
@@ -188,6 +150,12 @@ function Workouts() {
           </div>
         </section>
       </div>
+
+      <WorkoutModal
+        workout={selectedWorkout}
+        onClose={() => setSelectedWorkout(null)}
+        serverUrl={SERVER_URL}
+      />
     </main>
   );
 }

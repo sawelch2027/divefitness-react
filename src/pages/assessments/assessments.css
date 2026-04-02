@@ -15,6 +15,10 @@
   border: 2px solid #0b0b3b;
   border-radius: 4px;
   background: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .metrics-card{
@@ -38,6 +42,7 @@
 .unit-tabs{
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .unit-tab{
@@ -69,6 +74,7 @@
   font-size: 10px;
   font-weight: 800;
   color: #111;
+  min-width: 0;
 }
 
 .metrics-form input{
@@ -79,6 +85,7 @@
   font-size: 10px;
   outline: none;
   background: #ffffff;
+  min-width: 0;
 }
 
 .metrics-form input:focus{
@@ -95,6 +102,8 @@
   color: #111;
   margin-bottom: 10px;
   line-height: 1.15;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .assistant-card p{
@@ -102,6 +111,8 @@
   color: #555;
   line-height: 1.65;
   max-width: 340px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .assistant-card .hl{
@@ -140,8 +151,6 @@
   border-radius: 12px;
   padding: 30px 20px;
   text-align: center;
-
-  /* soft shadow like screenshot */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -151,12 +160,10 @@
   height: 36px;
   background: #2c4e73;
   color: white;
-
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 14px;
   font-weight: 700;
   margin: 0 auto 15px auto;
@@ -177,4 +184,82 @@
   line-height: 1.6;
   max-width: 260px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .assessment-page{
+    padding: 20px 18px 32px 18px;
+  }
+
+  .assessment-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .assistant-card{
+    padding: 18px 16px;
+  }
+
+  .assistant-card h2{
+    font-size: 24px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .assistant-card p{
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .metrics-top{
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .metrics-top h2{
+    font-size: 18px;
+  }
+
+  .unit-tab{
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .metrics-form{
+    gap: 14px;
+  }
+
+  .metrics-form label{
+    grid-template-columns: 1fr;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .metrics-form input{
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-title {
+    font-size: 20px;
+    margin-bottom: 28px;
+  }
+
+  .step-card {
+    padding: 24px 18px;
+  }
+
+  .step-card h3 {
+    font-size: 15px;
+  }
+
+  .step-card p {
+    font-size: 14px;
+    max-width: 100%;
+  }
 }
