@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import FeaturedCard from "../../components/FeatureCard/featurecard";
 import WorkoutCard from "../../components/WorkoutCard/Workoutcard";
+import WorkoutSubmission from "../../components/WorkoutSubmission/WorkoutSubmission";
 
 import strength from "../../assets/images/strength.jpg";
 import hiit from "../../assets/images/HIIT.jpg";
@@ -204,6 +205,7 @@ function Workouts() {
               </div>
             </div>
           </div>
+          <WorkoutSubmission />
         </section>
       </div>
     </main>
