@@ -205,7 +205,11 @@ function Workouts() {
               </div>
             </div>
           </div>
-          <WorkoutSubmission />
+          <section className="workout-section">
+            <div className="workout-wrap">
+              <WorkoutSubmission />
+            </div>
+          </section>
         </section>
       </div>
     </main>
