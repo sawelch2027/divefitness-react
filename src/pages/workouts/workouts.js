@@ -1,4 +1,5 @@
 import "./workouts.css";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import FeaturedCard from "../../components/FeatureCard/featurecard";
@@ -13,6 +14,114 @@ import workout2 from "../../assets/images/Workout 2.jpg";
 import workout3 from "../../assets/images/Workout3.jpg";
 
 function Workouts() {
+  const [workouts, setWorkouts] = useState([]);
+  const [editingWorkout, setEditingWorkout] = useState(null);
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    getWorkouts();
+  }, []);
+
+  async function getWorkouts() {
+    try {
+      const response = await fetch("http://localhost:3001/api/workouts");
+      const data = await response.json();
+      setWorkouts(data);
+    } catch (error) {
+      console.log("Error fetching workouts:", error);
+    }
+  }
+
+  function validateWorkout(workout) {
+    const newErrors = {};
+
+    if (!workout.title || workout.title.trim().length < 3) {
+      newErrors.title = "Title must be at least 3 characters.";
+    }
+
+    if (!workout.category || workout.category.trim().length < 3) {
+      newErrors.category = "Category must be at least 3 characters.";
+    }
+
+    if (!workout.duration || workout.duration.trim().length < 3) {
+      newErrors.duration = "Duration must be at least 3 characters.";
+    }
+
+    if (!workout.level || !["Beginner", "Intermediate", "Advanced"].includes(workout.level)) {
+      newErrors.level = "Level must be Beginner, Intermediate, or Advanced.";
+    }
+
+    if (!workout.calories || !/^\d+\s?kcal$/.test(workout.calories.trim())) {
+      newErrors.calories = "Calories must look like 120 kcal.";
+    }
+
+    if (!workout.image || workout.image.trim().length < 5) {
+      newErrors.image = "Image must be at least 5 characters.";
+    }
+
+    if (!workout.shortDescription || workout.shortDescription.trim().length < 10) {
+      newErrors.shortDescription = "Short description must be at least 10 characters.";
+    }
+
+    if (!workout.description || workout.description.trim().length < 20) {
+      newErrors.description = "Description must be at least 20 characters.";
+    }
+
+    return newErrors;
+  }
+
+  async function deleteWorkout(id) {
+    try {
+      const response = await fetch(`http://localhost:3001/api/workouts/${id}`, {
+        method: "DELETE"
+      });
+
+      if (response.ok) {
+        setWorkouts(workouts.filter((workout) => workout.id !== id));
+        setMessage("Workout deleted successfully.");
+      }
+    } catch (error) {
+      console.log("Error deleting workout:", error);
+    }
+  }
+
+  async function updateWorkout(updatedWorkout) {
+    const validationErrors = validateWorkout(updatedWorkout);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/workouts/${updatedWorkout.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedWorkout)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setWorkouts(
+          workouts.map((workout) =>
+            workout.id === updatedWorkout.id ? data.workout : workout
+          )
+        );
+
+        setEditingWorkout(null);
+        setMessage("Workout updated successfully.");
+      }
+    } catch (error) {
+      console.log("Error updating workout:", error);
+    }
+  }
+
   return (
     <main className="workouts-page">
       <div className="page-wrap">
@@ -205,14 +314,113 @@ function Workouts() {
               </div>
             </div>
           </div>
-          <section className="workout-section">
-            <div className="workout-wrap">
-              <WorkoutSubmission />
+        </section>
+
+        <section className="workout-section">
+          <div className="workout-wrap">
+            <h2 className="workout-title">Manage Workouts</h2>
+
+            {message && <p className="success-message">{message}</p>}
+
+            <div className="server-workout-list">
+              {workouts.map((workout) => (
+                <div className="server-workout-card" key={workout.id}>
+                  <img src={`http://localhost:3001${workout.image}`} alt={workout.title} />
+                  <h3>{workout.title}</h3>
+                  <p><strong>Category:</strong> {workout.category}</p>
+                  <p><strong>Duration:</strong> {workout.duration}</p>
+                  <p><strong>Level:</strong> {workout.level}</p>
+                  <p><strong>Calories:</strong> {workout.calories}</p>
+                  <p>{workout.shortDescription}</p>
+
+                  <button onClick={() => setEditingWorkout(workout)}>Edit</button>
+                  <button onClick={() => deleteWorkout(workout.id)}>Delete</button>
+                </div>
+              ))}
             </div>
-          </section>
+
+            {editingWorkout && (
+              <EditWorkoutForm
+                workout={editingWorkout}
+                onUpdate={updateWorkout}
+                errors={errors}
+              />
+            )}
+          </div>
+        </section>
+
+        <section className="workout-section">
+          <div className="workout-wrap">
+            <WorkoutSubmission />
+          </div>
         </section>
       </div>
     </main>
+  );
+}
+
+function EditWorkoutForm({ workout, onUpdate, errors }) {
+  const [formData, setFormData] = useState({
+    id: workout.id,
+    title: workout.title,
+    category: workout.category,
+    duration: workout.duration,
+    level: workout.level,
+    calories: workout.calories,
+    image: workout.image,
+    shortDescription: workout.shortDescription,
+    description: workout.description
+  });
+
+  function handleChange(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    onUpdate(formData);
+  }
+
+  return (
+    <form className="edit-workout-form" onSubmit={handleSubmit}>
+      <h3>Edit Workout</h3>
+
+      <input name="title" value={formData.title} onChange={handleChange} placeholder="Title" />
+      {errors.title && <p className="error-message">{errors.title}</p>}
+
+      <input name="category" value={formData.category} onChange={handleChange} placeholder="Category" />
+      {errors.category && <p className="error-message">{errors.category}</p>}
+
+      <input name="duration" value={formData.duration} onChange={handleChange} placeholder="Duration" />
+      {errors.duration && <p className="error-message">{errors.duration}</p>}
+
+      <input name="level" value={formData.level} onChange={handleChange} placeholder="Level" />
+      {errors.level && <p className="error-message">{errors.level}</p>}
+
+      <input name="calories" value={formData.calories} onChange={handleChange} placeholder="Calories" />
+      {errors.calories && <p className="error-message">{errors.calories}</p>}
+
+      <input name="image" value={formData.image} onChange={handleChange} placeholder="Image path" />
+      {errors.image && <p className="error-message">{errors.image}</p>}
+
+      <input
+        name="shortDescription"
+        value={formData.shortDescription}
+        onChange={handleChange}
+        placeholder="Short description"
+      />
+      {errors.shortDescription && <p className="error-message">{errors.shortDescription}</p>}
+
+      <textarea
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Description"
+      />
+      {errors.description && <p className="error-message">{errors.description}</p>}
+
+      <button type="submit">Save Changes</button>
+    </form>
   );
 }
 
