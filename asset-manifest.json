@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/divefitness-react/static/css/main.a5a235db.css",
-    "main.js": "/divefitness-react/static/js/main.1a9c3ad9.js",
+    "main.css": "/divefitness-react/static/css/main.24cd7e93.css",
+    "main.js": "/divefitness-react/static/js/main.767019ab.js",
     "static/media/Nutrition2.jpg": "/divefitness-react/static/media/Nutrition2.3cab3cfa30c8c2ce809c.jpg",
     "static/media/nutrition1.jpg": "/divefitness-react/static/media/nutrition1.125f250da1a7f3dfd745.jpg",
     "static/media/Stretch.jpg": "/divefitness-react/static/media/Stretch.e3260ca190d5cfa4a719.jpg",
@@ -18,11 +18,11 @@
     "static/media/salmon.jpg": "/divefitness-react/static/media/salmon.1bdd77444791b4ec2896.jpg",
     "static/media/Workout1.jpg": "/divefitness-react/static/media/Workout1.b756801a7ee79feb9b05.jpg",
     "index.html": "/divefitness-react/index.html",
-    "main.a5a235db.css.map": "/divefitness-react/static/css/main.a5a235db.css.map",
-    "main.1a9c3ad9.js.map": "/divefitness-react/static/js/main.1a9c3ad9.js.map"
+    "main.24cd7e93.css.map": "/divefitness-react/static/css/main.24cd7e93.css.map",
+    "main.767019ab.js.map": "/divefitness-react/static/js/main.767019ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5a235db.css",
-    "static/js/main.1a9c3ad9.js"
+    "static/css/main.24cd7e93.css",
+    "static/js/main.767019ab.js"
   ]
 }
