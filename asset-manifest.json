@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/divefitness-react/static/css/main.24cd7e93.css",
-    "main.js": "/divefitness-react/static/js/main.767019ab.js",
+    "main.js": "/divefitness-react/static/js/main.4247e3e8.js",
     "static/media/Nutrition2.jpg": "/divefitness-react/static/media/Nutrition2.3cab3cfa30c8c2ce809c.jpg",
     "static/media/nutrition1.jpg": "/divefitness-react/static/media/nutrition1.125f250da1a7f3dfd745.jpg",
     "static/media/Stretch.jpg": "/divefitness-react/static/media/Stretch.e3260ca190d5cfa4a719.jpg",
@@ -19,10 +19,10 @@
     "static/media/Workout1.jpg": "/divefitness-react/static/media/Workout1.b756801a7ee79feb9b05.jpg",
     "index.html": "/divefitness-react/index.html",
     "main.24cd7e93.css.map": "/divefitness-react/static/css/main.24cd7e93.css.map",
-    "main.767019ab.js.map": "/divefitness-react/static/js/main.767019ab.js.map"
+    "main.4247e3e8.js.map": "/divefitness-react/static/js/main.4247e3e8.js.map"
   },
   "entrypoints": [
     "static/css/main.24cd7e93.css",
-    "static/js/main.767019ab.js"
+    "static/js/main.4247e3e8.js"
   ]
 }
