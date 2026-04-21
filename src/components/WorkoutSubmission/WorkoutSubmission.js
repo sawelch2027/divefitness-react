@@ -16,7 +16,7 @@ function WorkoutSubmission() {
   };
 
   const emptyEditForm = {
-    id: "",
+    _id: "",
     title: "",
     category: "",
     duration: "",
@@ -55,11 +55,19 @@ function WorkoutSubmission() {
   async function fetchWorkouts() {
     try {
       const response = await fetch(`${API_BASE}/api/workouts`);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch workouts");
+      }
+
       const data = await response.json();
-      setWorkouts(data);
+      setWorkouts(Array.isArray(data) ? data : []);
+      setStatusMessage("");
+      setSubmitSuccess(false);
     } catch (error) {
       setStatusMessage("Unable to load workouts from the server.");
       setSubmitSuccess(false);
+      setWorkouts([]);
     } finally {
       setLoading(false);
     }
@@ -153,13 +161,13 @@ function WorkoutSubmission() {
         if (result.errors && Array.isArray(result.errors)) {
           setStatusMessage(result.errors.join(" "));
         } else {
-          setStatusMessage("Unable to add workout.");
+          setStatusMessage(result.error || "Unable to add workout.");
         }
         setSubmitSuccess(false);
         return;
       }
 
-      setWorkouts((prevWorkouts) => [...prevWorkouts, result.workout]);
+      setWorkouts((prevWorkouts) => [result.workout, ...prevWorkouts]);
       setFormData(emptyForm);
       setErrors({});
       setStatusMessage("Workout added successfully!");
@@ -174,7 +182,7 @@ function WorkoutSubmission() {
     setEditingWorkout(workout);
 
     setEditFormData({
-      id: workout.id,
+      _id: workout._id,
       title: workout.title || "",
       category: workout.category || "",
       duration: workout.duration || "",
@@ -199,68 +207,68 @@ function WorkoutSubmission() {
   }
 
   async function handleUpdate(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const validationErrors = validateForm(editFormData);
-  setErrors(validationErrors);
+    const validationErrors = validateForm(editFormData);
+    setErrors(validationErrors);
 
-  if (Object.keys(validationErrors).length > 0) {
-    setStatusMessage("Please fix the errors in the edit form.");
-    setSubmitSuccess(false);
-    return;
-  }
-
-  const workoutToSend = {
-    title: editFormData.title,
-    category: editFormData.category,
-    duration: editFormData.duration,
-    level: editFormData.level,
-    calories: editFormData.calories,
-    image: editFormData.image,
-    shortDescription: editFormData.shortDescription,
-    description: editFormData.description
-  };
-
-  try {
-    const response = await fetch(
-      `${API_BASE}/api/workouts/${editFormData.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(workoutToSend)
-      }
-    );
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      if (result.errors && Array.isArray(result.errors)) {
-        setStatusMessage(result.errors.join(" "));
-      } else {
-        setStatusMessage("Unable to update workout.");
-      }
+    if (Object.keys(validationErrors).length > 0) {
+      setStatusMessage("Please fix the errors in the edit form.");
       setSubmitSuccess(false);
       return;
     }
 
-    setWorkouts((prevWorkouts) =>
-      prevWorkouts.map((workout) =>
-        workout.id === result.workout.id ? result.workout : workout
-      )
-    );
+    const workoutToSend = {
+      title: editFormData.title,
+      category: editFormData.category,
+      duration: editFormData.duration,
+      level: editFormData.level,
+      calories: editFormData.calories,
+      image: editFormData.image,
+      shortDescription: editFormData.shortDescription,
+      description: editFormData.description
+    };
 
-    setStatusMessage("Workout updated successfully!");
-    setSubmitSuccess(true);
-    setEditingWorkout(null);
-    setEditFormData(emptyEditForm);
-    setErrors({});
-  } catch (error) {
-    setStatusMessage("Error updating workout.");
-    setSubmitSuccess(false);
+    try {
+      const response = await fetch(
+        `${API_BASE}/api/workouts/${editFormData._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(workoutToSend)
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        if (result.errors && Array.isArray(result.errors)) {
+          setStatusMessage(result.errors.join(" "));
+        } else {
+          setStatusMessage(result.error || "Unable to update workout.");
+        }
+        setSubmitSuccess(false);
+        return;
+      }
+
+      setWorkouts((prevWorkouts) =>
+        prevWorkouts.map((workout) =>
+          workout._id === result.workout._id ? result.workout : workout
+        )
+      );
+
+      setStatusMessage("Workout updated successfully!");
+      setSubmitSuccess(true);
+      setEditingWorkout(null);
+      setEditFormData(emptyEditForm);
+      setErrors({});
+    } catch (error) {
+      setStatusMessage("Error updating workout.");
+      setSubmitSuccess(false);
+    }
   }
-}
 
   async function handleDelete(id) {
     try {
@@ -277,10 +285,10 @@ function WorkoutSubmission() {
       }
 
       setWorkouts((prevWorkouts) =>
-        prevWorkouts.filter((workout) => workout.id !== id)
+        prevWorkouts.filter((workout) => workout._id !== id)
       );
 
-      if (editingWorkout && editingWorkout.id === id) {
+      if (editingWorkout && editingWorkout._id === id) {
         cancelEdit();
       }
 
@@ -293,6 +301,10 @@ function WorkoutSubmission() {
   }
 
   function getImageSrc(workout) {
+    if (!workout.image) {
+      return "";
+    }
+
     if (
       workout.image.startsWith("http://") ||
       workout.image.startsWith("https://")
@@ -463,16 +475,19 @@ function WorkoutSubmission() {
 
           {loading ? (
             <p className="loading-text">Loading workouts...</p>
+          ) : workouts.length === 0 ? (
+            <p className="loading-text">No workouts available yet.</p>
           ) : (
             <div className="server-workout-grid">
               {workouts.map((workout) => (
-                <article className="server-workout-card" key={workout.id}>
+                <article className="server-workout-card" key={workout._id}>
                   <img
                     src={getImageSrc(workout)}
                     alt={workout.title}
                     className="server-workout-image"
                     onError={(e) => {
-                      e.target.src = workout.image;
+                      e.target.src =
+                        "https://via.placeholder.com/400x250?text=Workout+Image";
                     }}
                   />
                   <div className="server-workout-content">
@@ -498,7 +513,7 @@ function WorkoutSubmission() {
                       <button
                         type="button"
                         className="delete-btn"
-                        onClick={() => handleDelete(workout.id)}
+                        onClick={() => handleDelete(workout._id)}
                       >
                         Delete
                       </button>
