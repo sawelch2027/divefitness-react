@@ -163,8 +163,8 @@ function Home() {
             <div className="person">
               <img src={person1} alt="Name" />
               <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
+                <p className="name">Ron Howard</p>
+                <p className="description">Father of 4 trying to stay in shape</p>
               </div>
             </div>
           </div>
@@ -179,8 +179,8 @@ function Home() {
             <div className="person">
               <img src={person2} alt="Name" />
               <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
+                <p className="name">Kimmy Jong</p>
+                <p className="description">Personal Trainer, Exercise Science PHD</p>
               </div>
             </div>
           </div>
@@ -195,8 +195,8 @@ function Home() {
             <div className="person">
               <img src={person3} alt="Name" />
               <div>
-                <p className="name">Name</p>
-                <p className="description">Description</p>
+                <p className="name">Frank Porter</p>
+                <p className="description">Army Veteran</p>
               </div>
             </div>
           </div>
